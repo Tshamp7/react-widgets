@@ -13,7 +13,7 @@ const Search = (props) => {
           list: "search",
           format: "json",
           origin: "*",
-          srsearch: { searchTerm },
+          srsearch: searchTerm,
         },
       });
       setResults(data.query.search);
