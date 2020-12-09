@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Accordion from "./components/Accordion";
 import Dropdown from "./components/Dropdown";
+import Route from "./components/Route";
 import Search from "./components/Search";
 import Translate from "./components/Translate";
 
@@ -34,19 +35,56 @@ const options = [
   },
 ];
 
+// const routeSwitch = (
+//   selected,
+//   setSelected,
+//   color,
+//   path = window.location.pathname
+// ) => {
+//   switch (path) {
+//     case "/":
+//       return <Accordion items={items} />;
+//     case "/list":
+//       return <Search />;
+//     case "/dropdown":
+//       return (
+//         <Dropdown
+//           options={options}
+//           selected={selected}
+//           onSelectedChange={setSelected}
+//           label={color}
+//         />
+//       );
+//     case "/translate":
+//       return <Translate options={options} />;
+
+//     default:
+//       return <Accordion items={items} />;
+//   }
+// };
+
 const App = () => {
   const [selected, setSelected] = useState(options[0]);
+  //   return <div>{routeSwitch(selected, setSelected, "color")}</div>;
   return (
     <div>
-      {/* <Accordion items={items} /> */}
-      {/* <Search /> */}
-      {/* <Dropdown
-        options={options}
-        selected={selected}
-        label={"Color"}
-        onSelectedChange={setSelected}
-      /> */}
-      <Translate />
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list">
+        <Search />
+      </Route>
+      <Route path="/dropdown">
+        <Dropdown
+          label="color"
+          options={options}
+          selected={selected}
+          onSelectedChange={setSelected}
+        />
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
     </div>
   );
 };
