@@ -66,7 +66,12 @@ const options = [
 
 const App = () => {
   const [selected, setSelected] = useState(options[0]);
-  //   return <div>{routeSwitch(selected, setSelected, "color")}</div>;
+  //   return (
+  //     <div>
+  //       <Header />
+  //       {routeSwitch(selected, setSelected, "color")}
+  //     </div>
+  //   );
   return (
     <div>
       <Header />
